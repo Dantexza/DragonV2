@@ -1,0 +1,541 @@
+<html>
+<head>
+<base href="http://spritedatabase.net">
+<script type='text/javascript' src='http://spritedatabase.net/lightbox.js'></script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+<script src="jscookie.js"></script>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+// light stylesheet
+$("#css-light").click(function() {
+$("link[rel=stylesheet]").attr({href : "2017_white.css"});
+Cookies.set('style', 'light', { expires: 30 });
+});
+ 
+// dark stylesheet
+$("#css-dark").click(function() {
+$("link[rel=stylesheet]").attr({href : "2017.css"});
+Cookies.set('style', 'dark', { expires: 30 });
+});
+});
+</script>
+
+<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'>
+<link href='2017_white.css' rel='stylesheet' type='text/css' />
+
+<script type='text/javascript'>//<![CDATA[
+$(document).ready(function(){
+$('.category').click(function(e)
+{
+var a = (this).getElementsByTagName('span')[0];
+if (a.innerHTML == '+'){a.innerHTML = '-';}
+else if (a.innerHTML == '-'){a.innerHTML = '+';}
+$(this).next('div.selection').slideToggle('fast');
+});
+});
+//]]> 
+</script>
+<script language="javascript"> 
+function toggle2(showHideDiv, switchTextDiv) {
+	var ele = document.getElementById(showHideDiv);
+	var text = document.getElementById(switchTextDiv);
+	if(ele.style.display == "table") {
+    		ele.style.display = "none";
+		text.innerHTML = "<img src='layout/show.gif' border='0' title='Expand' style='vertical-align: middle;'> ";
+  	}
+	else {
+		ele.style.display = "table";
+		text.innerHTML = "<img src='layout/hide.gif' border='0' title='Collapse' style='vertical-align: middle;'> ";
+	}
+}
+</script>
+<script type="text/javascript">
+    //<![CDATA[
+
+    var tabLinks = new Array();
+    var contentDivs = new Array();
+
+    function init() {
+
+      // Grab the tab links and content divs from the page
+      var tabListItems = document.getElementById('tabs').childNodes;
+      for ( var i = 0; i < tabListItems.length; i++ ) {
+        if ( tabListItems[i].nodeName == "LI" ) {
+          var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+          var id = getHash( tabLink.getAttribute('href') );
+          tabLinks[id] = tabLink;
+          contentDivs[id] = document.getElementById( id );
+        }
+      }
+
+      // Assign onclick events to the tab links, and
+      // highlight the first tab
+      var i = 0;
+
+      for ( var id in tabLinks ) {
+        tabLinks[id].onclick = showTab;
+        tabLinks[id].onfocus = function() { this.blur() };
+        if ( i == 0 ) tabLinks[id].className = 'selected';
+        i++;
+      }
+
+      // Hide all content divs except the first
+      var i = 0;
+
+      for ( var id in contentDivs ) {
+        if ( i != 0 ) contentDivs[id].className = 'tabContent hide';
+        i++;
+      }
+    }
+
+    function showTab() {
+      var selectedId = getHash( this.getAttribute('href') );
+
+      // Highlight the selected tab, and dim all others.
+      // Also show the selected content div, and hide all others.
+      for ( var id in contentDivs ) {
+        if ( id == selectedId ) {
+          tabLinks[id].className = 'selected';
+          contentDivs[id].className = 'tabContent';
+        } else {
+          tabLinks[id].className = '';
+          contentDivs[id].className = 'tabContent hide';
+        }
+      }
+
+      // Stop the browser following the link
+      return false;
+    }
+
+    function getFirstChildWithTagName( element, tagName ) {
+      for ( var i = 0; i < element.childNodes.length; i++ ) {
+        if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
+      }
+    }
+
+    function getHash( url ) {
+      var hashPos = url.lastIndexOf ( '#' );
+      return url.substring( hashPos + 1 );
+    }
+
+    //]]>
+</script>
+
+
+
+<title>Sprite Database</title>
+</head>
+<body>
+<a href="top"></a><div class='column'><div class='banner'><a href='http://spritedatabase.net/'><img src='2017/logo17.png'></a></div>
+<div class='navbar'>
+<a href='news'>Home</a>
+<a href='contact'>Contact</a>
+<a href='submit'>Submit</a>
+<a href='download'>Downloads</a>
+<a href='tutorial'>Articles</a>
+<a href='tags'>Tags</a>
+<a href='http://spritedatabase.net/forums/'>Forums</a><form style='float: right; margin-top: 10px; margin-bottom: 0px;' id='tfnewsearch' name='search' method='POST' action='search.php'>
+<span><input type='text' id='searchtxt' name='q' placeholder='Search...'><input type='submit' value='go' id='search'></span>
+</form>
+<div style='float: right; margin-right: 20px;'>
+<span style='color: #ddd; padding: 5px;'>theme:</span>
+<span id='css-dark' title='Dark theme' style='background: #4C4C52; cursor: pointer;'><img src='2017/ct.png'/></span>
+<span id='css-light' title='Light theme' style='background: #F8F8FF; cursor: pointer;'><img src='2017/ct.png'/></span>
+</div>
+</div>
+<table border='0' cellpadding='0' cellspacing='0' width='100%'><tr><td width='200' class='systd' valign='top'>
+<div class='sysnav'><div style='background: #474E90; color: #FFF; padding: 10px;'>Systems</div><a href='system/3ds'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/35.gif' style='margin-bottom: 1px;'/></span> 3DS</a><a href='system/amiga'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/39.gif' style='margin-bottom: 1px;'/></span> Amiga</a><a href='system/amstradcpc'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/42.gif' style='margin-bottom: 1px;'/></span> Amstrad CPC</a><a href='system/arcade'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/9.gif' style='margin-bottom: 1px;'/></span> Arcade</a><a href='system/lynx'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/29.gif' style='margin-bottom: 1px;'/></span> Atari Lynx</a><a href='system/cd-i'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/33.gif' style='margin-bottom: 1px;'/></span> CD-i</a><a href='system/colecovision'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/10.gif' style='margin-bottom: 1px;'/></span> ColecoVision</a><a href='system/pc'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/17.gif' style='margin-bottom: 1px;'/></span> Computer</a><a href='system/dreamcast'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/30.gif' style='margin-bottom: 1px;'/></span> Dreamcast</a><a href='system/ds'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/2.gif' style='margin-bottom: 1px;'/></span> DS</a><a href='system/gameboy'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/5.gif' style='margin-bottom: 1px;'/></span> Game Boy</a><a href='system/gba'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/7.gif' style='margin-bottom: 1px;'/></span> Game Boy Advance</a><a href='system/gamegear'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/12.gif' style='margin-bottom: 1px;'/></span> Game Gear</a><a href='system/gamecube'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/11.gif' style='margin-bottom: 1px;'/></span> GameCube</a><a href='system/genesis'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/3.gif' style='margin-bottom: 1px;'/></span> Genesis</a><a href='system/sms'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/13.gif' style='margin-bottom: 1px;'/></span> Master System</a><a href='system/mobile'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/14.gif' style='margin-bottom: 1px;'/></span> Mobile</a><a href='system/msx'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/31.gif' style='margin-bottom: 1px;'/></span> MSX</a><a href='system/neogeo'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/15.gif' style='margin-bottom: 1px;'/></span> Neo-Geo</a><a href='system/ngp'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/6.gif' style='margin-bottom: 1px;'/></span> Neo-Geo Pocket</a><a href='system/nes'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/1.gif' style='margin-bottom: 1px;'/></span> NES</a><a href='system/n64'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/16.gif' style='margin-bottom: 1px;'/></span> Nintendo 64</a><a href='system/pc98'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/32.gif' style='margin-bottom: 1px;'/></span> PC-98</a><a href='system/ps1'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/18.gif' style='margin-bottom: 1px;'/></span> PlayStation</a><a href='system/ps2'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/19.gif' style='margin-bottom: 1px;'/></span> PlayStation 2</a><a href='system/ps3'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/34.gif' style='margin-bottom: 1px;'/></span> PlayStation 3</a><a href='system/psp'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/20.gif' style='margin-bottom: 1px;'/></span> PlayStation Portable</a><a href='system/psvita'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/40.gif' style='margin-bottom: 1px;'/></span> PlayStation Vita</a><a href='system/saturn'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/21.gif' style='margin-bottom: 1px;'/></span> Saturn</a><a href='system/32x'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/22.gif' style='margin-bottom: 1px;'/></span> Sega 32X</a><a href='system/sega-cd'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/23.gif' style='margin-bottom: 1px;'/></span> Sega CD</a><a href='system/sega-pico'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/24.gif' style='margin-bottom: 1px;'/></span> Sega Pico</a><a href='system/x68000'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/41.gif' style='margin-bottom: 1px;'/></span> Sharp X68000</a><a href='system/snes'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/4.gif' style='margin-bottom: 1px;'/></span> SNES</a><a href='system/tg16'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/25.gif' style='margin-bottom: 1px;'/></span> TurboGrafx-16</a><a href='system/tgcd'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/26.gif' style='margin-bottom: 1px;'/></span> TurboGrafx-CD</a><a href='system/virtualboy'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/27.gif' style='margin-bottom: 1px;'/></span> Virtual Boy</a><a href='system/wii'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/28.gif' style='margin-bottom: 1px;'/></span> Wii</a><a href='system/wiiu'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/38.gif' style='margin-bottom: 1px;'/></span> Wii U</a><a href='system/wonderswan'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/8.gif' style='margin-bottom: 1px;'/></span> WonderSwan</a><a href='system/xbox'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/37.gif' style='margin-bottom: 1px;'/></span> Xbox</a><a href='system/xbox360'>
+	 <span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/sys16/36.gif' style='margin-bottom: 1px;'/></span> Xbox 360</a><a href='customs'><span style='margin-right: 3px; display: inline-block; width: 25px; text-align: center;'><img src='layout/customs.gif' style='margin-bottom: 1px;'/></span> Customs</a></td><td valign="top" style="padding: 20px;"><span class='top'>News & Updates</span><center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- New Leaderboard -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0004615849072972"
+     data-ad-slot="4165001105"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center><br/><div class='newsbox'>
+
+<img src='layout/admin_avatar.png' style='float: left; padding: 20px; padding-top: 40px; padding-bottom: 30px;'/>
+<div class='newstop'>
+<a href='http://spritedatabase.net/post.php?date=2017-09-20' style='font-size: 16px; font-weight: bold;'>News: Same layout, lots of new features</a><br>
+<span style='font-size: 12px;'><em>Same layout, lots of new features</em></span><br><br>Posted by <b>Grim</b> 1 week ago in <a href='news?tag=site-upgrades'><i>#site-upgrades</i></a> - <a href='http://spritedatabase.net/post.php?date=2017-09-20#disqus_thread'>comments</a></div><div style='padding: 20px;'>Okay, I goofed. I got a little too excited about having a new layout and then - as I tend to do - started second-guessing myself pretty fast. Didn't test enough different resolutions, either. On the most popular laptop resolution it just looked goofy. So I've reverted from the 2-column, centered look back to the classic 3-column, full-width we've had for years. However, all the new features and enhancements are still here, including:
+<br><br>
+&#8226; Dark & light themes - Using the links next to the search bar (upper right!) you can now instantly switch between a light and dark site theme. We actually had this feature for a while several years ago, but this new version is much better. Embrace the darkness!
+<br><br>
+&#8226; Enhanced tags - <a href='http://spritedatabase.net/tags'>Tags</a> are now sorted into 'company', 'series', and 'genre' types. You all probably know what that means, but for example: <a href='http://spritedatabase.net/game/2879'>Sonic Mania</a> is tagged Sega, Sonic, and Platformer respectively. As before there's still a lot more tagging to be done but I'm adding more all the time.
+<br><br>
+&#8226; Enhanced game pages - Game pages are redesigned to show the game's icon as well as a better-formatted display of tag information.
+<br><br>
+&#8226; View change anywhere - You can now change between text, icon, and list view on almost any page that shows games or files. This includes news posts, system pages, game pages, and tag pages.
+<br><br>
+&#8226; System icons - The pixel art system icons I teased back in July are now live! I made all these myself and am pretty proud of them. Go to any system page and check them out. These replace the old photos which mostly came from Wikipedia and Google images. 
+<br><br>
+So yeah, sorry about the mix-up. If you saw the 'new' setup and liked it, feel free to make your voice heard. I'll continue tinkering in the meantime.</div></div><br><div class='newsbox'>
+
+<img src='layout/admin_avatar.png' style='float: left; padding: 20px; padding-top: 40px; padding-bottom: 30px;'/>
+<div class='newstop'>
+<a href='http://spritedatabase.net/post.php?date=2017-09-17' style='font-size: 16px; font-weight: bold;'>Update: 09/17/2017</a><br>
+<span style='font-size: 12px;'><em>No-one on whom to use my talents as a wordsmith</em></span><br><br>Posted by <b>Grim</b> 1 week ago in <a href='news?tag=weekly-update'><i>#weekly-update</i></a> - <a href='http://spritedatabase.net/post.php?date=2017-09-17#disqus_thread'>comments</a><br/><br/
+<b>Change view: </b> <a href='http://spritedatabase.net/?view=1'><span title='In TEXT view, you will be shown a list of all games without any preview image.' class='viewchanger' style='border-radius: 4px 0px 0px 4px; border-left: 1px solid #000; background: #454A80; color: #FFF; cursor: default;'><b>&#9776;</b> Text</span></a><a href='http://spritedatabase.net/?view=2'><span title='In ICON view, all games will be shown in a grid with a preview image.' class='viewchanger' style='border-left: 1px solid #000; border-right: 1px solid #000; '>
+<div style='font-size: 4pt; display: inline-block;
+	letter-spacing: 1px;
+	line-height: 75%;'>
+	&#x25a0;&#x25a0;&#x25a0;<br />
+	&#x25a0;&#x25a0;&#x25a0;<br />
+	&#x25a0;&#x25a0;&#x25a0;
+ </div>
+Icon</span></a><a href='http://spritedatabase.net/?view=3'><span title='In LIST view, all games will be shown with a preview image in a single column.' class='viewchanger' style='border-radius: 0px 4px 4px 0px; border-right: 1px solid #000;'>&#8942;&#9776; List</span></a></div><div style='padding: 20px;'>It's that time again, so enjoy some fresh content.<br><br>
+Also, a bit of news - a new layout is coming soon. It'll look a lot tighter - packing in more content at lower resolutions, while looking less floaty at higher ones. I've converted most of the existing site pages and when I'm done and happy with them all, the new design will go live. Besides looking nicer (in my opinion) it'll have a few new features I think you'll all enjoy. Look forward to it. Bye!<br><br>New files: <b>21</b></div>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/gamegear' title='Game Gear'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/12.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Game Gear
+					</div>
+
+				</a> 
+				<a href='game/2894'>Asterix and the Great Rescue</a>
+			</div><span class='textview'><a href='file/21852/Asterix_&_Obelix' style='padding: 4px; padding-left: 10px; display: block;'>Asterix & Obelix</a></span><span class='textview'><a href='file/21853/Enemies,_Bosses,_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Enemies, Bosses, & Miscellaneous</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/gamegear' title='Game Gear'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/12.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Game Gear
+					</div>
+
+				</a> 
+				<a href='game/2895'>Baku Baku</a>
+			</div><span class='textview'><a href='file/21854/Gallopy' style='padding: 4px; padding-left: 10px; display: block;'>Gallopy</a></span><span class='textview'><a href='file/21855/Gon' style='padding: 4px; padding-left: 10px; display: block;'>Gon</a></span><span class='textview'><a href='file/21856/Master_Piggy' style='padding: 4px; padding-left: 10px; display: block;'>Master Piggy</a></span><span class='textview'><a href='file/21857/Nurse_Grape' style='padding: 4px; padding-left: 10px; display: block;'>Nurse Grape</a></span><span class='textview'><a href='file/21858/Polly' style='padding: 4px; padding-left: 10px; display: block;'>Polly</a></span><span class='textview'><a href='file/21859/Silver_Angela' style='padding: 4px; padding-left: 10px; display: block;'>Silver Angela</a></span><span class='textview'><a href='file/21860/Soldier' style='padding: 4px; padding-left: 10px; display: block;'>Soldier</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/gamegear' title='Game Gear'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/12.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Game Gear
+					</div>
+
+				</a> 
+				<a href='game/2897'>Batman Returns</a>
+			</div><span class='textview'><a href='file/21861/Batman' style='padding: 4px; padding-left: 10px; display: block;'>Batman</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2892'>Cadash</a>
+			</div><span class='textview'><a href='file/21849/Ninja' style='padding: 4px; padding-left: 10px; display: block;'>Ninja</a></span><span class='textview'><a href='file/21850/Stage_1_Enemies' style='padding: 4px; padding-left: 10px; display: block;'>Stage 1 Enemies</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/gamegear' title='Game Gear'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/12.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Game Gear
+					</div>
+
+				</a> 
+				<a href='game/2896'>GP Rider</a>
+			</div><span class='textview'><a href='file/21862/Bikes' style='padding: 4px; padding-left: 10px; display: block;'>Bikes</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/gamegear' title='Game Gear'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/12.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Game Gear
+					</div>
+
+				</a> 
+				<a href='game/2898'>Legend of Illusion starring Mickey Mouse</a>
+			</div><span class='textview'><a href='file/21863/Mickey_Mouse' style='padding: 4px; padding-left: 10px; display: block;'>Mickey Mouse</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2481'>Riot City</a>
+			</div><span class='textview'><a href='file/21843/Eddie' style='padding: 4px; padding-left: 10px; display: block;'>Eddie</a></span><span class='textview'><a href='file/21844/Sammy' style='padding: 4px; padding-left: 10px; display: block;'>Sammy</a></span><span class='textview'><a href='file/21848/Dick' style='padding: 4px; padding-left: 10px; display: block;'>Dick</a></span><span class='textview'><a href='file/21847/Doctor_D.' style='padding: 4px; padding-left: 10px; display: block;'>Doctor D.</a></span><span class='textview'><a href='file/21845/G._Horn' style='padding: 4px; padding-left: 10px; display: block;'>G. Horn</a></span><span class='textview'><a href='file/21846/H._Bull' style='padding: 4px; padding-left: 10px; display: block;'>H. Bull</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/tgcd' title='TurboGrafx-CD'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/26.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  TurboGrafx-CD
+					</div>
+
+				</a> 
+				<a href='game/2893'>Riot Zone</a>
+			</div><span class='textview'><a href='file/21851/Johnny' style='padding: 4px; padding-left: 10px; display: block;'>Johnny</a></span></div><br><div class='newsbox'>
+
+<img src='layout/admin_avatar.png' style='float: left; padding: 20px; padding-top: 40px; padding-bottom: 30px;'/>
+<div class='newstop'>
+<a href='http://spritedatabase.net/post.php?date=2017-09-10' style='font-size: 16px; font-weight: bold;'>Update: 09/10/2017</a><br>
+<span style='font-size: 12px;'><em>Going fast is required</em></span><br><br>Posted by <b>Grim</b> 2 weeks ago in <a href='news?tag=weekly-update'><i>#weekly-update</i></a> - <a href='http://spritedatabase.net/post.php?date=2017-09-10#disqus_thread'>comments</a><br/><br/
+<b>Change view: </b> <a href='http://spritedatabase.net/?view=1'><span title='In TEXT view, you will be shown a list of all games without any preview image.' class='viewchanger' style='border-radius: 4px 0px 0px 4px; border-left: 1px solid #000; background: #454A80; color: #FFF; cursor: default;'><b>&#9776;</b> Text</span></a><a href='http://spritedatabase.net/?view=2'><span title='In ICON view, all games will be shown in a grid with a preview image.' class='viewchanger' style='border-left: 1px solid #000; border-right: 1px solid #000; '>
+<div style='font-size: 4pt; display: inline-block;
+	letter-spacing: 1px;
+	line-height: 75%;'>
+	&#x25a0;&#x25a0;&#x25a0;<br />
+	&#x25a0;&#x25a0;&#x25a0;<br />
+	&#x25a0;&#x25a0;&#x25a0;
+ </div>
+Icon</span></a><a href='http://spritedatabase.net/?view=3'><span title='In LIST view, all games will be shown with a preview image in a single column.' class='viewchanger' style='border-radius: 0px 4px 4px 0px; border-right: 1px solid #000;'>&#8942;&#9776; List</span></a></div><div style='padding: 20px;'>Back again! Didn't keep you waiting, eh? Thanks to Yawackhary, Ryon, jin315 for this excellent content™. More next week, get your submissions in if you wanna see them here!<br><br>New files: <b>30</b></div>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/genesis' title='Genesis'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/3.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Genesis
+					</div>
+
+				</a> 
+				<a href='game/105'>Beyond Oasis</a>
+			</div><span class='textview'><a href='file/21821/Village' style='padding: 4px; padding-left: 10px; display: block;'>Village</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2883'>Bomb Jack</a>
+			</div><span class='textview'><a href='file/21828/Bomb_Jack,_Enemies,_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Bomb Jack, Enemies, & Miscellaneous</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2884'>Bonk's Adventure</a>
+			</div><span class='textview'><a href='file/21829/Bonk' style='padding: 4px; padding-left: 10px; display: block;'>Bonk</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/sms' title='Master System'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/13.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Master System
+					</div>
+
+				</a> 
+				<a href='game/2891'>Bubble Bobble</a>
+			</div><span class='textview'><a href='file/21840/Bub_&_Bob' style='padding: 4px; padding-left: 10px; display: block;'>Bub & Bob</a></span><span class='textview'><a href='file/21841/Enemies' style='padding: 4px; padding-left: 10px; display: block;'>Enemies</a></span><span class='textview'><a href='file/21842/Items_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Items & Miscellaneous</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2885'>City Connection</a>
+			</div><span class='textview'><a href='file/21830/Cars_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Cars & Miscellaneous</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2886'>Congo Bongo</a>
+			</div><span class='textview'><a href='file/21831/Player,_Enemies,_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Player, Enemies, & Miscellaneous</a></span><span class='textview'><a href='file/21832/Background' style='padding: 4px; padding-left: 10px; display: block;'>Background</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2887'>Elevator Action</a>
+			</div><span class='textview'><a href='file/21833/Agent_17,_Enemies,_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Agent 17, Enemies, & Miscellaneous</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2861'>Golden Axe: The Duel</a>
+			</div><span class='textview'><a href='file/21822/Death_Adder_Voices' style='padding: 4px; padding-left: 10px; display: block;'>Death Adder Voices</a></span><span class='textview'><a href='file/21823/Gillius_Rockhead_Voices' style='padding: 4px; padding-left: 10px; display: block;'>Gillius Rockhead Voices</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2882'>Ninja Kazan</a>
+			</div><span class='textview'><a href='file/21827/Ninja' style='padding: 4px; padding-left: 10px; display: block;'>Ninja</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/psp' title='PlayStation Portable'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/20.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  PlayStation Portable
+					</div>
+
+				</a> 
+				<a href='game/2880'>Power Stone Collection</a>
+			</div><span class='textview'><a href='file/21825/Portraits_(Power_Stone_2)' style='padding: 4px; padding-left: 10px; display: block;'>Portraits (Power Stone 2)</a></span><span class='textview'><a href='file/21824/Portraits_(Power_Stone)' style='padding: 4px; padding-left: 10px; display: block;'>Portraits (Power Stone)</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/saturn' title='Saturn'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/21.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Saturn
+					</div>
+
+				</a> 
+				<a href='game/2881'>Ragnagard</a>
+			</div><span class='textview'><a href='file/21826/Susano_Stage' style='padding: 4px; padding-left: 10px; display: block;'>Susano Stage</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/sms' title='Master System'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/13.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Master System
+					</div>
+
+				</a> 
+				<a href='game/2890'>Rampage</a>
+			</div><span class='textview'><a href='file/21837/George' style='padding: 4px; padding-left: 10px; display: block;'>George</a></span><span class='textview'><a href='file/21838/Lizzie' style='padding: 4px; padding-left: 10px; display: block;'>Lizzie</a></span><span class='textview'><a href='file/21839/Ralph' style='padding: 4px; padding-left: 10px; display: block;'>Ralph</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2481'>Riot City</a>
+			</div><span class='textview'><a href='file/21816/Billy' style='padding: 4px; padding-left: 10px; display: block;'>Billy</a></span><span class='textview'><a href='file/21817/Jack' style='padding: 4px; padding-left: 10px; display: block;'>Jack</a></span><span class='textview'><a href='file/21818/James' style='padding: 4px; padding-left: 10px; display: block;'>James</a></span><span class='textview'><a href='file/21819/Rick' style='padding: 4px; padding-left: 10px; display: block;'>Rick</a></span><span class='textview'><a href='file/21820/Lee' style='padding: 4px; padding-left: 10px; display: block;'>Lee</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/pc' title='Computer'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/17.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Computer
+					</div>
+
+				</a> 
+				<a href='game/2879'>Sonic Mania</a>
+			</div><span class='textview'><a href='file/21813/Knuckles' style='padding: 4px; padding-left: 10px; display: block;'>Knuckles</a></span><span class='textview'><a href='file/21815/Sonic' style='padding: 4px; padding-left: 10px; display: block;'>Sonic</a></span><span class='textview'><a href='file/21814/Tails' style='padding: 4px; padding-left: 10px; display: block;'>Tails</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2888'>Spelunker</a>
+			</div><span class='textview'><a href='file/21834/Spelunker' style='padding: 4px; padding-left: 10px; display: block;'>Spelunker</a></span>
+			<div class='category' valign='middle' style='font-weight: bold; padding: 0px;'>
+				<a href='system/arcade' title='Arcade'>
+				
+					<div class='sysbar' style='width: 135px; border-radius: 0px; border: 0px;'>
+					<img src='layout/sys16/9.gif' border='0' style='vertical-align: middle; margin-right: 3px'/>  Arcade
+					</div>
+
+				</a> 
+				<a href='game/2889'>Zaxxon</a>
+			</div><span class='textview'><a href='file/21836/Ships,_Objects,_&_Miscellaneous' style='padding: 4px; padding-left: 10px; display: block;'>Ships, Objects, & Miscellaneous</a></span><span class='textview'><a href='file/21835/Background' style='padding: 4px; padding-left: 10px; display: block;'>Background</a></span></div><br><table width='90%' border='0' align='center' cellpadding='4' cellspacing='1'><tr><td width='100'></td><td></td><td width='100' style='text-align: right'><a href='news?tag=&start=1'><div class='sysbar' style='padding: 10px;'>Older Posts &raquo;</div></a></td></tr></table></td><td width='160' valign='top' align='right' class='rightbar'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- New_Wide -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-0004615849072972"
+     data-ad-slot="6759201843"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><div style="background: #474E90; color: #FFF; padding: 10px;" align="left">Extras</div>
+<div class="sysnav" style="width: 160px;" align="left">
+<a href="latest">New files</a>
+<a href="randomgame">Random game</a>
+<a href="random">Random file</a>
+<a href="contributors">Contributors</a>
+<a href="affiliate">Affiliates</a>
+</div><div style='background: #474E90; color: #FFF; padding: 10px;' align='left'>Latest Files</div><center>
+		<a href='file/21870'>
+		<div class='latesticon' title='Thin Liz' >
+		<div style='background-image: url(icon2/21870.gif); width: 120px; height: 65px; background-position: center center;'></div>
+		</div>
+		</a>
+		
+		
+		<a href='file/21869'>
+		<div class='latesticon' title='Little Sam' >
+		<div style='background-image: url(icon2/21869.gif); width: 120px; height: 65px; background-position: center center;'></div>
+		</div>
+		</a>
+		
+		
+		<a href='file/21868'>
+		<div class='latesticon' title='Shauna' >
+		<div style='background-image: url(icon2/21868.gif); width: 120px; height: 65px; background-position: center center;'></div>
+		</div>
+		</a>
+		
+		<a href='latest'><div class='sysbar' style='padding: 10px;'>View All</div></a></center></td></tr></table><div class='navbar' align='right'></div><div class='footer'><center><div style='width: 800px;' align='center'>Copyright &copy; Sprite Database  2017. All rights reserved.<br><br>
+
+All game characters, graphics, sounds, and other materials are property of their original creators and copyright holders, and are provided here for private or non-commercial use. <br><br>
+
+<a href='terms'>Terms of use</a> - <a href='privacy'>Privacy Policy</a></div></center>
+</div></div>
+
+<script type='text/javascript'>
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'spritedatabase'; // required: replace example with your forum shortname
+
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function () {
+		var s = document.createElement('script'); s.async = true;
+		s.type = 'text/javascript';
+		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+</script>
+
+</body>
+</html>
